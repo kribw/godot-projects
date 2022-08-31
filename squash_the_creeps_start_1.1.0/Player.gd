@@ -16,6 +16,7 @@ export var jump_impulse = 20
 # meters per second.
 export var bounce_impulse = 16
 var s = Summator.new()
+var simulator = SpheroSimulator.new()
 
 var velocity = Vector3.ZERO
 
@@ -58,6 +59,13 @@ func _physics_process(delta):
 		s.add(20)
 		s.add(30)
 		print("Summator total: ", s.get_total())
+		var path = "input/test_input.txt"
+		var data  = simulator.read_input(path)
+		print(data.size())
+		
+		for i in data:
+			print(i)
+			
 		s.reset()
 		
 	velocity.y -= fall_acceleration * delta	
