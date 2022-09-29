@@ -39,6 +39,7 @@ uv1_scale = Vector3( 2, 2, 1 )
 script = ExtResource( 6 )
 
 [node name="Ground" type="StaticBody" parent="."]
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 shape = SubResource( 1 )

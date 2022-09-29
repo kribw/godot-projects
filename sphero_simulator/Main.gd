@@ -7,17 +7,20 @@ extends Node
 
 var simulator = SpheroSimulator.new()
 
-var vel_path = "C:\\Users\\Kristoffer\\OneDrive - UiT Office 365\\VR\\Sensor data\\Sphero-sep.26-2022-@-09-55-Velocity.csv"
+var path = "data/Sphero-sep.26-2022-@-09-55"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	simulator.read_velocity(vel_path)
+	simulator.read_input(path)
 	
 	var size = simulator.get_velocity_size()
 	print(str("Size: ", size))
 	
 	for i in size:
 		print(simulator.get_velocity_x(i))
+	
+	print(str("Is data consistent? ", simulator.is_data_consistent()))
+	print(str("Data sizes: ", simulator.get_all_sizes()))
 	
 	pass # Replace with function body.
 

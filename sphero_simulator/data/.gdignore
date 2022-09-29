@@ -1,0 +1,2 @@
+# Godot assumes CSV files to be translations, so we ignore these to avoid issues
+Sphero*
