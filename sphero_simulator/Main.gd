@@ -11,7 +11,7 @@ var path = "data/Sphero-sep.26-2022-@-09-55"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	simulator.read_input(path)
+	simulator.parse_file(path)
 	
 	var size = simulator.get_velocity_size()
 	print(str("Size: ", size))

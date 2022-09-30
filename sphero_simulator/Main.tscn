@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://art/grass/Grass001_1K_Color.jpg" type="Texture" id=1]
 [ext_resource path="res://art/grass/Grass001_1K_AmbientOcclusion.jpg" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://art/grass/Grass001_1K_NormalDX.jpg" type="Texture" id=4]
 [ext_resource path="res://art/grass/Grass001_1K_Roughness.jpg" type="Texture" id=5]
 [ext_resource path="res://Main.gd" type="Script" id=6]
+[ext_resource path="res://SpheroModel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Flag.tscn" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30, 1, 30 )
@@ -39,7 +41,6 @@ uv1_scale = Vector3( 2, 2, 1 )
 script = ExtResource( 6 )
 
 [node name="Ground" type="StaticBody" parent="."]
-visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 shape = SubResource( 1 )
@@ -48,9 +49,12 @@ shape = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 4 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.996016, 0.031932, -0.0832582, -0.0060447, 0.90736, 0.420312, 0.0889666, 0.419141, -0.903552, -0.633127, 10.6487, -10.8782 )
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.0932423, -0.976116, 0.196225, 0.708361, 0.0734588, 0.702017, -0.699665, 0.204456, 0.684593, 0.694046, 16.1289, 8.11656 )
 shadow_enabled = true
+
+[node name="Sphero" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[node name="KinematicBody" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.69561, 5.22968, 0 )
