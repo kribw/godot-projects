@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <unordered_set>
 
 SpheroSimulator::SpheroSimulator() {}
 
@@ -38,6 +39,10 @@ std::vector<SpheroGyroscope> _gyroscopes;
 std::vector<SpheroDistance> _distances;
 std::vector<SpheroAccelerometer> _accelerometers;
 
+// Indices where a collision occurs
+//std::vector<int> _collisions;
+std::unordered_set<int> _collisions;
+
 // Parse file containing Sphero data
 void SpheroSimulator::parse_file(const String file_path) {
 	parse_velocity(file_path);
@@ -46,6 +51,7 @@ void SpheroSimulator::parse_file(const String file_path) {
 	parse_gyroscope(file_path);
 	parse_distance(file_path);
 	parse_accelerometer(file_path);
+	find_collisions();
 }
 
 // Read a file and return lines in vector<string>
@@ -374,6 +380,35 @@ String SpheroSimulator::get_all_sizes() {
 	return String(str.c_str());
 }
 
+// Check whether there is a collision
+bool SpheroSimulator::is_collision(int index) {
+	return _collisions.count(index) > 0;
+}
+
+// Find all collisions in stored data
+void SpheroSimulator::find_collisions() {
+	// Skip first index to avoid exception
+	for (int i = 1; i < _velocities.size(); i++) {
+		// add index to _collisions if there is a collision
+		try {
+			if (_accelerometers[i].y <= -1.08 &&
+				_accelerometers[i].total >= 1.10 //&&
+				//_velocities[i - 1].total > _velocities[i].total
+				) {
+				_collisions.insert(i);
+			}
+		} catch (const std::exception &) {
+			// Something went wrong
+			std::cout << "Exception in find_collisions()" << std::endl;
+		}
+	}
+}
+
+// Get number of collisions
+int SpheroSimulator::get_collisions_size() {
+	return _collisions.size();
+}
+
 void SpheroSimulator::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("parse_file"), &SpheroSimulator::parse_file);
 
@@ -405,4 +440,7 @@ void SpheroSimulator::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_velocity_size"), &SpheroSimulator::get_velocity_size);
 	ClassDB::bind_method(D_METHOD("is_data_consistent"), &SpheroSimulator::is_data_consistent);
 	ClassDB::bind_method(D_METHOD("get_all_sizes"), &SpheroSimulator::get_all_sizes);
+
+	ClassDB::bind_method(D_METHOD("is_collision"), &SpheroSimulator::is_collision);
+	ClassDB::bind_method(D_METHOD("get_collisions_size"), &SpheroSimulator::get_collisions_size);
 }

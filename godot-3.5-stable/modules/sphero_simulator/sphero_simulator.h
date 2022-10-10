@@ -53,4 +53,8 @@ public:
 	int get_velocity_size();
 	bool is_data_consistent();
 	String get_all_sizes();
+
+	bool is_collision(int index);
+	void find_collisions();
+	int get_collisions_size();
 };
