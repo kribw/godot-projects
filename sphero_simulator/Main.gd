@@ -1,30 +1,15 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var simulator = SpheroSimulator.new()
-
-var path = "data/Sphero-sep.26-2022-@-09-55"
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	simulator.parse_file(path)
-	
-	var size = simulator.get_velocity_size()
-	print(str("Size: ", size))
-	
-	for i in size:
-		print(simulator.get_velocity_x(i))
-	
-	print(str("Is data consistent? ", simulator.is_data_consistent()))
-	print(str("Data sizes: ", simulator.get_all_sizes()))
-	
-	pass # Replace with function body.
+	$UserInterface/SimCompleted.hide()
 
+# Called when simulation is completed
+func _on_sim_completed(message):
+	$UserInterface/SimCompleted/SimStats.text = message
+	$UserInterface/SimCompleted.show()
+	print("_on_sim_completed")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+# Called when key to restart simulation is pressed
+func _on_sim_restart():
+	get_tree().reload_current_scene()
