@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://models/terreng.glb" type="PackedScene" id=1]
+[ext_resource path="res://models/terrain.obj" type="ArrayMesh" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+void fragment() {
+	float x = VERTEX.x;
+	float y = VERTEX.y;
+	float z = VERTEX.z;
+	ALBEDO = vec3(3.0, 0.3, 0.5);
+}
+
+void vertex() {
+	//VERTEX = vec3(10.0, 0.0, 0.2);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="Spatial" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.0635, 0 )
+
+[node name="terreng" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_override = SubResource( 2 )
+mesh = ExtResource( 2 )

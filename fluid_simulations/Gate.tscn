@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://models/not_adjusted/gate.glb" type="PackedScene" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+
+[node name="gate" parent="MeshInstance" instance=ExtResource( 1 )]
