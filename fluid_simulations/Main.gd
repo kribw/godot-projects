@@ -1,13 +1,13 @@
 extends Spatial
 
 func _on_Timer_timeout():
-	if($Helicopter.translation.x > 20):
+	if($helicopter.translation.x > 20):
 		$Timer.stop()
 		return
 	
-	var dest = $Helicopter.translation + Vector3(1, 0, 0)
+	var dest = $helicopter.translation + Vector3(1, 0, 0)
 	print(dest)
-	$Tween.interpolate_property($Helicopter, "translation", $Helicopter.translation, dest, 1.0, Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($helicopter, "translation", $helicopter.translation, dest, 1.0, Tween.TRANS_LINEAR)
 	$Tween.start()
 
 func setup_timer():
