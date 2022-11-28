@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://models/buildings.glb" type="PackedScene" id=1]
+[ext_resource path="res://RedCylinder.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type spatial;
@@ -26,3 +27,19 @@ shader = SubResource( 1 )
 
 [node name="bygninger" parent="." index="0"]
 material/0 = SubResource( 2 )
+
+[node name="TopLeft" parent="." index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 40, 158 )
+visible = false
+
+[node name="TopRight" parent="." index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 171, 40, 158 )
+visible = false
+
+[node name="BotLeft" parent="." index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 40, 42 )
+visible = false
+
+[node name="BotRight" parent="." index="4" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 171, 40, 42 )
+visible = false

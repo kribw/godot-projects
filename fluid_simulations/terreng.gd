@@ -1,19 +1,22 @@
 extends MeshInstance
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var material = get_active_material(0)
-	material.set_shader_param("test", 1.0)
-	print("test: ", material.get_shader_param("test"))
+	var material = get_node(".").get_surface_material(0)
+	#print("material: ", mesh.surface_get_material(0))
+	print("material: ", material)
+
+
+	var image = Image.new()
+	var err = image.load("images/output.png")
+
+	if(err != OK):
+		print("Failed to load image.")
 	
-	material.set_shader_param("global_transform", get_global_transform())
-	print("global transform: ", material.get_shader_param("global_transform"))
+	var texture = ImageTexture.new()
+	texture.create_from_image(image, 0)
+	print("texture: ", texture)
+	material.set_shader_param("my_texture", texture)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
