@@ -1,11 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Buildings.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Gate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Ledge.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Helicopter.tscn" type="PackedScene" id=5]
-[ext_resource path="res://BlueCylinder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Environment.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Main.gd" type="Script" id=7]
 
 [node name="Spatial" type="Spatial"]
@@ -19,28 +16,17 @@ shadow_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="buildings" parent="." instance=ExtResource( 1 )]
-
 [node name="gate" parent="." instance=ExtResource( 3 )]
 
 [node name="helicopter" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -137.656, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 68.247, -55.791, 0 )
 
-[node name="ledge" parent="." instance=ExtResource( 4 )]
+[node name="Environment" parent="." instance=ExtResource( 6 )]
 
-[node name="terrain" parent="." instance=ExtResource( 2 )]
+[node name="Camera2" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 80, 170, 0 )
+far = 200.0
 
-[node name="TopLeft" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11916, 47.2493, 47.8594 )
-
-[node name="TopRight" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 171, 65, 158 )
-visible = false
-
-[node name="BotLeft" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 62.0971, -60 )
-visible = false
-
-[node name="BotRight" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 171, 65.444, -42 )
-visible = false
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.999983, -0.0037103, 0.00442804, 0, 0.766493, 0.642253, -0.00577701, -0.642242, 0.76648, 78.712, 89.562, 79.981 )
+far = 300.0

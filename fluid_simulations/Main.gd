@@ -4,17 +4,17 @@ func _on_Timer_timeout():
 	if($helicopter.translation.x > 20):
 		$Timer.stop()
 		return
-	
-	var dest = $helicopter.translation + Vector3(1, 0, 0)
-	print(dest)
-	$Tween.interpolate_property($helicopter, "translation", $helicopter.translation, dest, 1.0, Tween.TRANS_LINEAR)
-	$Tween.start()
 
 func setup_timer():
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
 	$Timer.set_wait_time(1.0)
 	$Timer.set_one_shot(false)
-	$Timer.start()
+	#$Timer.start()
+	
+	var start = Vector3(52.51, -68.91, 0.0)
+	var end = Vector3(80.57, -81.40, 0.0)
+	$Tween.interpolate_property($helicopter, "translation", start, end, 14.4, Tween.TRANS_LINEAR)
+	$Tween.start()
 
 func _ready():
 	setup_timer()

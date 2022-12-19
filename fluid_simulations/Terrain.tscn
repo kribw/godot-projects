@@ -3,45 +3,16 @@
 [ext_resource path="res://models/terrain.glb" type="PackedScene" id=1]
 [ext_resource path="res://terreng.gd" type="Script" id=2]
 [ext_resource path="res://images/output_2.png" type="Texture" id=3]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type spatial;
-
-uniform sampler2D my_texture;
-varying vec2 tex_position;
-varying vec2 position;
-const float area = 50.0;
-
-vec2 get_tex_pos(vec2 pos) {
-	// set tex_position
-	float x = ((pos.x / area) / 2.0) + 0.5;
-	float y = ((pos.y / area) / 2.0) + 0.5;
-	return vec2(x, y);
-}
-
-bool is_valid_area() {
-	return position.x < area && position.x > -area && position.y > -area && position.y < area;
-}
-
-void vertex() {
-	// Manipulate vertices
-	position = VERTEX.xz;
-	tex_position = get_tex_pos(VERTEX.xz);
-}
-
-void fragment() {
-	// Set individual pixels between vertices
-	if(is_valid_area())
-		ALBEDO = texture(my_texture, tex_position).rgb;
-	else
-		ALBEDO = vec3(0.0, 0.7, 0.4);
-}"
+[ext_resource path="res://shaders/Texture.gdshader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+shader = ExtResource( 4 )
+shader_param/x_offset = -31.01
+shader_param/y_offset = 0.0
 shader_param/my_texture = ExtResource( 3 )
 
 [node name="terrain" instance=ExtResource( 1 )]
+transform = Transform( 0.931177, 0, 0.364568, 0, 1, 0, -0.364568, 0, 0.931177, 0, 0, 0 )
 
 [node name="terreng" parent="." index="0"]
 material/0 = SubResource( 2 )
