@@ -6,8 +6,8 @@
 [ext_resource path="res://art/grass/Grass001_1K_NormalDX.jpg" type="Texture" id=4]
 [ext_resource path="res://art/grass/Grass001_1K_Roughness.jpg" type="Texture" id=5]
 [ext_resource path="res://Main.gd" type="Script" id=6]
-[ext_resource path="res://SpheroModel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Skybox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/SpheroModel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Skybox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="CubeMesh" id=2]

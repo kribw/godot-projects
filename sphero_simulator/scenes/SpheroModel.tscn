@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://CameraFollow.gd" type="Script" id=1]
-[ext_resource path="res://SpheroModel.gd" type="Script" id=2]
+[ext_resource path="res://scenes/CameraFollow.gd" type="Script" id=1]
+[ext_resource path="res://scenes/SpheroModel.gd" type="Script" id=2]
 [ext_resource path="res://models/c4_explosive.glb" type="PackedScene" id=3]
 [ext_resource path="res://sound/collision.mp3" type="AudioStream" id=4]
 

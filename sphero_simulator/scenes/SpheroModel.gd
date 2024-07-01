@@ -72,7 +72,7 @@ func _on_Timer_timeout():
 
 func add_collision(dest):
 	# Add collision object to scene
-	var obj_res = load("res://Flag.tscn")
+	var obj_res = load("res://scenes/Flag.tscn")
 	var obj = obj_res.instance()
 	var offset = $Model/Sphere.mesh.radius # Spawn next to our Sphero, not on top
 	obj.set_translation(dest - Vector3(offset, 0.0, 0.0))
