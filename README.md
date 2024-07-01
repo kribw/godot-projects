@@ -11,7 +11,7 @@ Godot simulation visualizing how the downdraft from the [SAR Queen helicopter](h
 ## 📁 sphero_simulator
 📖 [DTE-3605 Virtual reality, Graphics and Animation - project](https://uit.no/utdanning/emner/emne?p_document_id=765882)
 
-Two-part project where movement-data from a [Sphero BOLT](https://sphero.com/products/sphero-bolt) was used to create a visual simulation in [Godot](https://godotengine.org/). 
+Two-part project where movement data from a [Sphero BOLT](https://sphero.com/products/sphero-bolt) was used to create a visual simulation in [Godot](https://godotengine.org/). 
 
 📑 [Report, part one: Preliminary assessment and intended implementation.](https://github.com/kribw/godot-projects/blob/main/sphero_simulator/part-1-kwi059.pdf)
 
