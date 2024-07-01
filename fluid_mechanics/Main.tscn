@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Gate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Helicopter.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Environment.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Helicopter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Environment.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Main.gd" type="Script" id=7]
 
 [node name="Spatial" type="Spatial"]
