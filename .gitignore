@@ -32,3 +32,4 @@
 *.app
 
 /.vs
+/fluid_mechanics/models/Environment.glb
